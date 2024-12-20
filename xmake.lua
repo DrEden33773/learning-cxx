@@ -1,7 +1,7 @@
 add_rules("mode.debug", "mode.release")
 set_encodings("utf-8")
 set_warnings("all")
-set_languages("c++23")
+set_languages("c++17")
 
 target("test")
     set_kind("static")

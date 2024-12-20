@@ -1,6 +1,8 @@
 ﻿#include "../exercise.h"
 #include <cstdlib>
 
+#ifdef __cplusplus
+#if __cplusplus > 201703L
 template<typename LeftType, typename RightType, typename OutputType>
 concept Addable = requires(LeftType l, RightType r) {
     { l + r } -> std::convertible_to<OutputType>;
@@ -8,17 +10,27 @@ concept Addable = requires(LeftType l, RightType r) {
 
 template<typename T>
 concept SimpleAddable = Addable<T, T, T>;
+#endif
+#endif
 
 // READ: 函数模板 <https://zh.cppreference.com/w/cpp/language/function_template>
 // TODO: 将这个函数模板化
 template<typename T>
+#ifdef __cplusplus
+#if __cplusplus > 201703L
     requires SimpleAddable<T>
+#endif
+#endif
 auto plus(T a, T b) {
     return a + b;
 }
 
 template<typename T>
+#ifdef __cplusplus
+#if __cplusplus > 201703L
     requires SimpleAddable<T>
+#endif
+#endif
 auto abs(T a, T b) {
     if (a > b) {
         return a - b;
