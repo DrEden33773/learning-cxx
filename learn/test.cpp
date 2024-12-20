@@ -1,4 +1,6 @@
-﻿#include "test.h"
+﻿#define _CRT_SECURE_NO_WARNINGS
+
+#include "test.h"
 #include <cstdlib>
 #include <filesystem>
 #include <fstream>

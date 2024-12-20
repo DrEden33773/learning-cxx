@@ -1,14 +1,24 @@
 ﻿#include "../exercise.h"
 #include <cstdlib>
 
+template<typename LeftType, typename RightType, typename OutputType>
+concept Addable = requires(LeftType l, RightType r) {
+    { l + r } -> std::convertible_to<OutputType>;
+};
+
+template<typename T>
+concept SimpleAddable = Addable<T, T, T>;
+
 // READ: 函数模板 <https://zh.cppreference.com/w/cpp/language/function_template>
 // TODO: 将这个函数模板化
 template<typename T>
+    requires SimpleAddable<T>
 auto plus(T a, T b) {
     return a + b;
 }
 
 template<typename T>
+    requires SimpleAddable<T>
 auto abs(T a, T b) {
     if (a > b) {
         return a - b;
