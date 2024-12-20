@@ -43,22 +43,58 @@ Unique forward(Unique ptr) {
 int main(int argc, char **argv) {
     std::vector<std::string> problems[3];
 
-    drop(forward(reset(nullptr)));
+    drop(
+        forward(
+            reset(nullptr)// A
+            )             // A."f"
+    );                    // A."d" -> x
+    // {"fd"}
     problems[0] = std::move(RECORDS);
 
-    forward(drop(reset(forward(forward(reset(nullptr))))));
+    forward(
+        drop(
+            reset(
+                forward(
+                    forward(
+                        reset(nullptr)// B
+                        )             // B."f"
+                    )                 // B."f"
+                )                     // B."r" -> C
+            )                         // C."d" -> D
+    );                                // D."f"
+    // {"ffr", "d"}
     problems[1] = std::move(RECORDS);
 
-    drop(drop(reset(drop(reset(reset(nullptr))))));
+    drop(
+        drop(
+            reset(
+                drop(
+                    reset(
+                        reset(nullptr)// E
+                        )             // E."r" -> F
+                    )                 // F."d" -> nullptr
+                )                     // G
+            )                         // G."d" -> nullptr
+    );                                // nullptr
+    // {"r", "d", "d"}
     problems[2] = std::move(RECORDS);
 
     // ---- 不要修改以上代码 ----
 
     std::vector<const char *> answers[]{
-        {"fd"},
+        {
+            "fd",
+        },
         // TODO: 分析 problems[1] 中资源的生命周期，将记录填入 `std::vector`
-        {"", "", "", "", "", "", "", ""},
-        {"", "", "", "", "", "", "", ""},
+        {
+            "ffr",
+            "d",
+        },
+        {
+            "r",
+            "d",
+            "d",
+        },
     };
 
     // ---- 不要修改以下代码 ----
@@ -69,6 +105,8 @@ int main(int argc, char **argv) {
             ASSERT(std::strcmp(problems[i][j].c_str(), answers[i][j]) == 0, "wrong location");
         }
     }
+
+    // D -> x
 
     return 0;
 }

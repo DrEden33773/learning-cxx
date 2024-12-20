@@ -7,11 +7,24 @@
 template<class k, class v>
 bool key_exists(std::map<k, v> const &map, k const &key) {
     // TODO: 实现函数
+    for (auto &[_k, _v] : map) {
+        if (_k == key) {
+            return true;
+        }
+    }
+    return false;
 }
 
 template<class k, class v>
 void set(std::map<k, v> &map, k key, v value) {
     // TODO: 实现函数
+    for (auto &[_k, _v] : map) {
+        if (_k == key) {
+            _v = value;
+            return;
+        }
+    }
+    map.insert(std::pair<k, v>(std::move(key), std::move(value)));
 }
 
 // ---- 不要修改以下代码 ----
@@ -21,8 +34,8 @@ int main(int argc, char **argv) {
     std::map<std::string, std::string> secrets;
 
     set(secrets, "hello"s, "world"s);
-    ASSERT(key_exists(secrets, "hello"s), "\"hello\" shoud be in `secrets`");
-    ASSERT(!key_exists(secrets, "foo"s), "\"foo\" shoud not be in `secrets`");
+    ASSERT(key_exists(secrets, "hello"s), "\"hello\" should be in `secrets`");
+    ASSERT(!key_exists(secrets, "foo"s), "\"foo\" should not be in `secrets`");
 
     set(secrets, "foo"s, "bar"s);
     set(secrets, "Infini"s, "Tensor"s);
