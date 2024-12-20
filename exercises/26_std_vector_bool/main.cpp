@@ -12,23 +12,40 @@ int main(int argc, char **argv) {
     ASSERT(vec.size() == 100, "Make this assertion pass.");
     // NOTICE: 平台相关！注意 CI:Ubuntu 上的值。
     std::cout << "sizeof(std::vector<bool>) = " << sizeof(std::vector<bool>) << std::endl;
-    ASSERT(sizeof(vec) == 32, "Fill in the correct value.");
+#ifdef __linux__
+    ASSERT(sizeof(vec) == 40, "Make this assertion pass.");
+#else
+    ASSERT(sizeof(vec) == 32, "Make this assertion pass.");
+#endif
     {
         vec[20] = false;
-        ASSERT(!vec[20], "Fill in `vec[20]` or `!vec[20]`.");
+        ASSERT(!vec[20], "Make this assertion pass.");
     }
     {
         vec.push_back(false);
-        ASSERT(vec.size() == 101, "Fill in the correct value.");
-        ASSERT(!vec[100], "Fill in `vec[100]` or `!vec[100]`.");
+        ASSERT(vec.size() == 101, "Make this assertion pass.");
+        ASSERT(!vec[100], "Make this assertion pass.");
     }
     {
         auto ref = vec[30];
-        ASSERT(ref, "Fill in `ref` or `!ref`");
-        ref = false;
-        ASSERT(!ref, "Fill in `ref` or `!ref`");
-        // THINK: WHAT and WHY?
-        ASSERT(!vec[30], "Fill in `vec[30]` or `!vec[30]`.");
+        ASSERT(ref, "Make this assertion pass.");
+        {
+            vec[20] = false;
+            ASSERT(!vec[20], "Fill in `vec[20]` or `!vec[20]`.");
+        }
+        {
+            vec.push_back(false);
+            ASSERT(vec.size() == 101, "Fill in the correct value.");
+            ASSERT(!vec[100], "Fill in `vec[100]` or `!vec[100]`.");
+        }
+        {
+            auto ref = vec[30];
+            ASSERT(ref, "Fill in `ref` or `!ref`");
+            ref = false;
+            ASSERT(!ref, "Fill in `ref` or `!ref`");
+            // THINK: WHAT and WHY?
+            ASSERT(!vec[30], "Fill in `vec[30]` or `!vec[30]`.");
+        }
+        return 0;
     }
-    return 0;
 }
