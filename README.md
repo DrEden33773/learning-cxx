@@ -1,5 +1,6 @@
-﻿# Learning C++
+﻿# Learning C++ (Eden's fork)
 
+> **TO START WITH**: This repo is a fork of [`learning-cxx`](https://github.com/LearningInfiniTensor/learning-cxx)
 > **NOTICE** 推荐阅读 [C++ 参考手册](https://zh.cppreference.com/w/cpp) 学习 C/C++ 语法和 STL 库。
 
 ## 使用指南
