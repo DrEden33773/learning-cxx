@@ -13,6 +13,6 @@ struct Fibonacci {
 int main(int argc, char **argv) {
     Fibonacci constexpr FIB{{0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55}};
     ASSERT(FIB.get(10) == 55, "fibonacci(10) should be 55");
-    std::cout << "fibonacci(10) = " << FIB.get(10) << std::endl;
+    std::cout << "fibonacci(10) = " << FIB.get(10) << '\n';
     return 0;
 }

@@ -22,7 +22,7 @@ int main(int argc, char **argv) {
     ASSERT(fibonacci(10) == 55, "fibonacci(10) should be 55");
 
     auto fib90 = fibonacci(90);
-    std::cout << "fibonacci(90) = " << fib90 << std::endl;
+    std::cout << "fibonacci(90) = " << fib90 << '\n';
     ASSERT(fib90 == 2880067194370816120, "fibonacci(90) should be 2880067194370816120");
     return 0;
 }

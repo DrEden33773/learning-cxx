@@ -34,12 +34,12 @@ static bool test_exercise(int n, const char *log) {
     char str[] = "exerciseXX";
     std::sprintf(str, "exercise%02d", n);
 
-    os << "\x1b[34m" << str << " testing" << "\x1b[0m" << std::endl
-       << "==================" << std::endl;
+    os << "\x1b[34m" << str << " testing" << "\x1b[0m" << '\n'
+       << "==================" << '\n';
     auto pass = process_run("", str, log) == EXIT_SUCCESS && process_run("run", str, log) == EXIT_SUCCESS;
-    os << "=================" << std::endl
-       << "\x1b[" << (pass ? 32 : 31) << 'm' << str << (pass ? " passed" : " failed") << "\x1b[0m" << std::endl
-       << std::endl;
+    os << "=================" << '\n'
+       << "\x1b[" << (pass ? 32 : 31) << 'm' << str << (pass ? " passed" : " failed") << "\x1b[0m" << '\n'
+       << '\n';
     return pass;
 }
 

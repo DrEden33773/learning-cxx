@@ -8,39 +8,39 @@ struct X {
     int x;
 
     X(int x_) : x(x_) {
-        std::cout << ++i << ". " << "X(" << x << ')' << std::endl;
+        std::cout << ++i << ". " << "X(" << x << ')' << '\n';
     }
     X(X const &other) : x(other.x) {
-        std::cout << ++i << ". " << "X(X const &) : x(" << x << ')' << std::endl;
+        std::cout << ++i << ". " << "X(X const &) : x(" << x << ')' << '\n';
     }
     ~X() {
-        std::cout << ++i << ". " << "~X(" << x << ')' << std::endl;
+        std::cout << ++i << ". " << "~X(" << x << ')' << '\n';
     }
 };
 struct A {
     int a;
 
     A(int a_) : a(a_) {
-        std::cout << ++i << ". " << "A(" << a << ')' << std::endl;
+        std::cout << ++i << ". " << "A(" << a << ')' << '\n';
     }
     A(A const &other) : a(other.a) {
-        std::cout << ++i << ". " << "A(A const &) : a(" << a << ')' << std::endl;
+        std::cout << ++i << ". " << "A(A const &) : a(" << a << ')' << '\n';
     }
     ~A() {
-        std::cout << ++i << ". " << "~A(" << a << ')' << std::endl;
+        std::cout << ++i << ". " << "~A(" << a << ')' << '\n';
     }
 };
 struct B : public A {
     X x;
 
     B(int b) : A(1), x(b) {
-        std::cout << ++i << ". " << "B(" << a << ", X(" << x.x << "))" << std::endl;
+        std::cout << ++i << ". " << "B(" << a << ", X(" << x.x << "))" << '\n';
     }
     B(B const &other) : A(other.a), x(other.x) {
-        std::cout << ++i << ". " << "B(B const &) : A(" << a << "), x(X(" << x.x << "))" << std::endl;
+        std::cout << ++i << ". " << "B(B const &) : A(" << a << "), x(X(" << x.x << "))" << '\n';
     }
     ~B() {
-        std::cout << ++i << ". " << "~B(" << a << ", X(" << x.x << "))" << std::endl;
+        std::cout << ++i << ". " << "~B(" << a << ", X(" << x.x << "))" << '\n';
     }
 };
 
@@ -55,9 +55,9 @@ int main(int argc, char **argv) {
     static_assert(sizeof(B) == 8, "B is an A with an X");
 
     i = 0;
-    std::cout << std::endl
-              << "-------------------------" << std::endl
-              << std::endl;
+    std::cout << '\n'
+              << "-------------------------" << '\n'
+              << '\n';
 
     // 这是不可能的，A 无法提供 B 增加的成员变量的值
     // B ba = A(4);
@@ -69,9 +69,9 @@ int main(int argc, char **argv) {
     // NOTICE: 真实场景中不太可能出现这样的代码
 
     i = 0;
-    std::cout << std::endl
-              << "-------------------------" << std::endl
-              << std::endl;
+    std::cout << '\n'
+              << "-------------------------" << '\n'
+              << '\n';
 
     return 0;
 }

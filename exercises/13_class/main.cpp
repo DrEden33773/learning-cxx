@@ -35,6 +35,6 @@ int main(int argc, char **argv) {
     // 这个写法不再是未定义行为了。
     Fibonacci fib;
     ASSERT(fib.get(10) == 55, "fibonacci(10) should be 55");
-    std::cout << "fibonacci(10) = " << fib.get(10) << std::endl;
+    std::cout << "fibonacci(10) = " << fib.get(10) << '\n';
     return 0;
 }

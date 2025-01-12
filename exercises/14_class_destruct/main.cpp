@@ -34,6 +34,6 @@ public:
 int main(int argc, char **argv) {
     DynFibonacci fib(12);
     ASSERT(fib.get(10) == 55, "fibonacci(10) should be 55");
-    std::cout << "fibonacci(10) = " << fib.get(10) << std::endl;
+    std::cout << "fibonacci(10) = " << fib.get(10) << '\n';
     return 0;
 }

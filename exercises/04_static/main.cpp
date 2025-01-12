@@ -4,7 +4,7 @@
 // THINK: 这个函数的两个 `static` 各自的作用是什么？
 static int func(int param) {
     static int static_ = param;
-    // std::cout << "static_ = " << static_ << std::endl;
+    // std::cout << "static_ = " << static_ << '\n';
     return static_++;
 }
 

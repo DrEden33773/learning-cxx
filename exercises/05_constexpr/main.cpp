@@ -33,13 +33,13 @@ constexpr unsigned long long fibonacci(int i) {
 int main(int argc, char **argv) {
     constexpr auto FIB20 = fibonacci(20);
     ASSERT(FIB20 == 6765, "fibonacci(20) should be 6765");
-    std::cout << "fibonacci(20) = " << FIB20 << std::endl;
+    std::cout << "fibonacci(20) = " << FIB20 << '\n';
 
     // TODO: 观察错误信息，修改一处，使代码编译运行
     // PS: 编译运行，但是不一定能算出结果…… (直接上 constexpr + 迭代法矩阵快速幂, 轻松拿下)
     constexpr auto ANS_N = 100;
     auto ANS = fibonacci(ANS_N);
-    std::cout << "fibonacci(" << ANS_N << ") = " << ANS << std::endl;
+    std::cout << "fibonacci(" << ANS_N << ") = " << ANS << '\n';
 
     return 0;
 }

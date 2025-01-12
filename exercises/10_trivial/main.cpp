@@ -21,6 +21,6 @@ int main(int argc, char **argv) {
     // READ: 初始化的各种写法 <https://zh.cppreference.com/w/cpp/language/initialization>
     FibonacciCache fib;
     ASSERT(fibonacci(fib, 10) == 55, "fibonacci(10) should be 55");
-    std::cout << "fibonacci(10) = " << fibonacci(fib, 10) << std::endl;
+    std::cout << "fibonacci(10) = " << fibonacci(fib, 10) << '\n';
     return 0;
 }

@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
         for (auto b : log.result) {
             std::cout << (b ? "\x1b[32m#\x1b[0m" : "\x1b[31mX\x1b[0m");
         }
-        std::cout << ']' << std::endl;
+        std::cout << ']' << '\n';
         return EXIT_SUCCESS;
     }
     if (argc == 2 && std::strcmp(argv[1], "--simple") == 0) {
@@ -34,7 +34,7 @@ int main(int argc, char **argv) {
         std::vector<std::thread> threads;
         threads.reserve(concurrency);
 
-        std::cout << "concurrency: " << concurrency << std::endl;
+        std::cout << "concurrency: " << concurrency << '\n';
         Log log{Null{}};
         for (auto i = 0u; i <= concurrency; ++i) {
             threads.emplace_back([i, &log, &k] {
@@ -50,9 +50,9 @@ int main(int argc, char **argv) {
             thread.join();
         }
 
-        std::cout << std::accumulate(log.result.begin(), log.result.end(), 0, std::plus{}) << '/' << MAX_EXERCISE + 1 << std::endl;
+        std::cout << std::accumulate(log.result.begin(), log.result.end(), 0, std::plus{}) << '/' << MAX_EXERCISE + 1 << '\n';
         return EXIT_SUCCESS;
     }
-    std::cerr << "Usage: xmake run summary [--simple]" << std::endl;
+    std::cerr << "Usage: xmake run summary [--simple]" << '\n';
     return EXIT_FAILURE;
 }
