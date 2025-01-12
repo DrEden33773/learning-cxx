@@ -1,4 +1,5 @@
 ﻿#include "../exercise.h"
+#include <algorithm>
 #include <cstring>
 #include <memory>
 #include <string>
@@ -64,7 +65,7 @@ int main(int argc, char **argv) {
                 )                     // B."r" -> C
             )                         // C."d" -> D
     );                                // D."f"
-    // {"ffr", "d"}
+    // {"ffr", "d"}.reverse()
     problems[1] = std::move(RECORDS);
 
     drop(
@@ -78,8 +79,10 @@ int main(int argc, char **argv) {
                 )                     // G
             )                         // G."d" -> nullptr
     );                                // nullptr
-    // {"r", "d", "d"}
+    // {"r", "d", "d"}.reverse()
     problems[2] = std::move(RECORDS);
+
+    // 上面的 `.reverse()` 是必要的, 因为析构顺序与构造顺序相反
 
     // ---- 不要修改以上代码 ----
 
@@ -89,13 +92,13 @@ int main(int argc, char **argv) {
         },
         // TODO: 分析 problems[1] 中资源的生命周期，将记录填入 `std::vector`
         {
-            "ffr",
             "d",
+            "ffr",
         },
         {
+            "d",
+            "d",
             "r",
-            "d",
-            "d",
         },
     };
 
